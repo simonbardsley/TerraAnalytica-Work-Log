@@ -38,8 +38,8 @@ Target: TerraAnalytica Work Log 1.4.8
 - [x] Capture approved Light-mode and Dark-mode panel screenshots.
 - [x] Capture New Entry, Reports, Workflows and Help screenshots.
 - [x] Add useful alt text and captions for every screenshot.
-- [ ] Produce the dedicated TerraAnalytica Work Log webpage.
-- [ ] Add features, workflows, compatibility, support, pricing and related-plugin context.
+- [x] Produce the dedicated TerraAnalytica Work Log webpage.
+- [x] Add features, workflows, compatibility, support, pricing and related-plugin context.
 - [ ] Link the website, Git release and QGIS repository in both directions.
 
 Release is complete only when every unchecked item above is resolved or explicitly waived.

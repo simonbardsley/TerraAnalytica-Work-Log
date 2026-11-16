@@ -19,10 +19,10 @@ Target: TerraAnalytica Work Log 1.4.8
 - [x] Canonical source is maintained in the TerraAnalytica platform Git repository.
 - [x] Deterministic package builder and embedded build provenance are present.
 - [x] Automated release-contract tests are present.
-- [x] Commit the approved release source (`f6bf55c`).
-- [x] Build the installable ZIP from the committed revision (SHA-256 `28b046f449b0664dad4d160c12169ed6bc37e7d3c9d35a233f1c8e876246868c`).
-- [x] Create and push the `qgis-worklog-v1.4.8` tag.
-- [ ] Publish the ZIP, SHA-256 file and build receipt as release assets.
+- [x] Commit the approved release source (`062e146`).
+- [x] Build the installable ZIP from the committed revision (SHA-256 `175bc01c768df115fa624a9c8b0904d338c3d22b0a832e5f3c3ef01ac68cd65c`).
+- [x] Create and push the public `v1.4.8` tag.
+- [x] Publish the ZIP, SHA-256 file and build receipt as release assets.
 - [x] Select GPL-2.0-or-later and bundle the complete licence as `LICENSE`.
 
 ## Public QGIS repository

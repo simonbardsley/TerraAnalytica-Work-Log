@@ -23,7 +23,7 @@ Target: TerraAnalytica Work Log 1.4.8
 - [x] Build the installable ZIP from the committed revision (SHA-256 `28b046f449b0664dad4d160c12169ed6bc37e7d3c9d35a233f1c8e876246868c`).
 - [x] Create and push the `qgis-worklog-v1.4.8` tag.
 - [ ] Publish the ZIP, SHA-256 file and build receipt as release assets.
-- [ ] Complete licence selection/review before public distribution.
+- [x] Select GPL-2.0-or-later and bundle the complete licence as `LICENSE`.
 
 ## Public QGIS repository
 

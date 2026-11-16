@@ -51,6 +51,18 @@ Default database location is within the active QGIS profile under `worklog/workl
 
 Version: **1.4.8**
 
+## Licence
+
+Copyright (C) 2026 NZSpatial Limited, trading as TerraAnalytica.
+
+TerraAnalytica Work Log is free software licensed under the **GNU General
+Public License, version 2 or (at your option) any later version**
+(`GPL-2.0-or-later`). You may use, study, modify and redistribute the plugin
+under those terms. See the bundled `LICENSE` file for the complete licence.
+
+The TerraAnalytica name, logo and product branding are not granted for reuse
+as trademarks by the GPL software licence.
+
 
 
 ## TerraAnalytica interface and QGIS themes

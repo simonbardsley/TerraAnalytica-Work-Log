@@ -1,0 +1,10 @@
+{
+  "pluginId": "qgis_worklog",
+  "version": "1.4.0",
+  "sourceRevision": "development-uncommitted",
+  "sourceArchiveSha256": null,
+  "packageSha256": null,
+  "buildRecipe": "tools/build_release.py",
+  "reproducible": false,
+  "licenceStatus": "pending-counsel-review"
+}

@@ -1,0 +1,27 @@
+[general]
+name=TerraAnalytica Work Log
+qgisMinimumVersion=3.22
+qgisMaximumVersion=4.99
+description=GIS and remote-sensing work log for QGIS with time/project records, searchable tags, multi-user reporting, CSV/PDF/print export, reproducible processing workflows, Processing History capture, final parameters, inputs/outputs, demo data, built-in help and a TerraAnalytica Gold/Charcoal interface that follows QGIS light and dark themes.
+version=1.4.8
+author=TerraAnalytica / NZSpatial Limited
+email=
+about=TerraAnalytica Work Log is a practical GIS and remote-sensing work diary, project time record, technical notebook and processing-provenance recorder for QGIS. Record project work by analyst, work class, duration and tags; search and filter accumulated records; and create compact CSV/PDF/print reports by project, user, class, tag and date. Reproducible workflows can import QGIS Processing History, retain algorithms, parameters and commands, record manual steps from SNAP, Python, R, Google Earth Engine, drone/photogrammetry software or fieldwork, store final parameters and inputs/outputs, and generate workflow diagrams and method records. An opt-in demo pack and built-in GIS/remote-sensing help make the plugin easy to evaluate. TerraAnalytica is the plugin brand, while exported reports can remain neutral or use a custom organisation heading. If Work Log is useful, users may choose to support ongoing development with a koha — a voluntary gift or contribution given in appreciation and reciprocity. Koha is optional and does not unlock features.
+tracker=
+repository=
+tags=gis,remote sensing,earth observation,work log,provenance,reproducibility,workflow,processing history,technical notebook,project,time tracking,reporting,csv,pdf,qa,qc,qgis
+homepage=
+category=Plugins
+icon=icons/worklog.png
+experimental=False
+deprecated=False
+changelog=1.4.8 - Back up the Work Log database and attachments to one ZIP and restore as a separate copy.
+    1.4.7 - Document how to find archived Untitled notes and use the pop-out window.
+    1.4.6 - Clear Untitled when its QGIS project closes and retain saved notes in Untitled archive.
+    1.4.5 - Fixed a repeated theme refresh that delayed Save, Cancel and other buttons.
+    1.4.4 - Kept Save and Cancel visible while scrolling the New Entry form.
+    1.4.3 - Added save confirmation, clarified when filters hide a saved entry, and prevented duplicate entries on attachment retry. Widened User / analyst, restored Settings persistence, and fixed first-click redocking.
+    1.4.2 - Added a standard pop-out window and dedicated Dock in QGIS and Move to monitor controls.
+    1.4.1 - Aligned the New Entry information buttons and simplified dialog close handling.
+    1.4.0 - Added a version label and clearly labelled Help and Settings controls.
+    1.3.1 - Removed the Gold header divider and added the Work diary, reporting and processing provenance capability line.

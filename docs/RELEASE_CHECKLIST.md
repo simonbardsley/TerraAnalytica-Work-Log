@@ -27,8 +27,8 @@ Target: TerraAnalytica Work Log 1.4.8
 
 ## Public QGIS repository
 
-- [ ] Confirm the public Git repository URL.
-- [ ] Fill `repository`, `tracker` and `homepage` in `metadata.txt`.
+- [x] Confirm the public Git repository URL.
+- [x] Fill `repository`, `tracker` and `homepage` in `metadata.txt`.
 - [ ] Add the final release download URL to the QGIS `plugins.xml` catalogue.
 - [ ] Validate the catalogue and install through QGIS Plugin Manager.
 

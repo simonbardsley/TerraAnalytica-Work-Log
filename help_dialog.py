@@ -93,6 +93,21 @@ Tags: Sentinel-1, SAR, VV, VH, Gamma0, SNAP, pasture</pre>
 <p>Each work-log entry can also store a <b>User / Analyst</b>. The user shown in the main dock acts as the current session user and is pre-filled on new entries. An optional persistent default user can be set in Settings. Reports can be filtered by analyst and CSV/PDF outputs retain that attribution.</p>
 <div class="note"><b>Session behaviour:</b> changing the active user affects new entries only. Existing records keep the user that was stored when they were created or last edited.</div>
 
+<h2 id="disclaimer">Accuracy, reliability and responsible use</h2>
+<p>Work Log helps organise user-entered records and information exposed by QGIS, but it does not independently verify that entries, imported processing history, file references, parameters, durations, reports or workflow descriptions are complete, accurate or suitable for a particular purpose.</p>
+<ul>
+<li>Review important records and exported reports against the source project, data and processing history.</li>
+<li>Keep independent backups and preserve authoritative project files and evidence.</li>
+<li>Do not rely on Work Log alone for legal, contractual, safety-critical, regulatory, scientific or professional decisions.</li>
+<li>Results may also depend on QGIS, third-party providers, plugins, data quality and the user's configuration.</li>
+</ul>
+<div class="note"><b>Responsibility:</b> users remain responsible for validating their data, methods, outputs and compliance obligations. Work Log is provided under the GPL-2.0-or-later licence without warranty.</div>
+
+<h2 id="related">Related TerraAnalytica QGIS tools</h2>
+<p>Work Log is part of a wider family of complementary TerraAnalytica tools for QGIS. The suite includes focused tools for layer and map management, labelling, tool discovery, notebooks, spectral analysis and accuracy assessment.</p>
+<p>Related tools include <b>Layer Lab</b>, <b>Map Lab</b>, <b>Label Lab</b>, <b>Toolsearch</b>, <b>Notebook Lab</b>, <b>Spectral Lab</b> and <b>Accuracy Lab</b>. Availability and release status vary while the suite is prepared for publication.</p>
+<p class="small">Visit the Work Log homepage for current releases and information about the TerraAnalytica QGIS plugin suite.</p>
+
 <h2 id="koha">Koha and supporting development</h2>
 <p>If TerraAnalytica Work Log saves you time or improves the reproducibility of your GIS/remote-sensing work, you may choose to support continued development with a <b>koha</b>.</p>
 <p><b>Koha</b> is a Māori concept commonly used for a voluntary gift or contribution offered in appreciation, reciprocity or acknowledgement of value received. Koha is entirely optional in Work Log: it is not required to use the plugin and it does not unlock features.</p>

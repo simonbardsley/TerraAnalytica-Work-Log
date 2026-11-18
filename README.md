@@ -113,6 +113,14 @@ Demo projects are marked internally (`is_demo=1`). **Remove Demo Data…** delet
 The plugin remains TerraAnalytica-branded in QGIS. Exported Work Log and Workflow reports are generic by default, with an optional custom organisation/report heading in Settings. Each entry can store a User / Analyst; a session user in the dock is used as the default for new records and reports can filter by user.
 
 
+## TerraAnalytica QGIS plugin suite
+
+Work Log is part of a family of complementary TerraAnalytica tools for QGIS. Related tools cover layer and map management, labelling, tool discovery, notebooks, spectral analysis and accuracy assessment. Availability varies while the suite is prepared for publication; see the [Work Log homepage](https://terraanalytica.co.nz/qgis-plugins/work-log) for current release information.
+
+## Accuracy and reliability disclaimer
+
+Work Log organises user-entered records and information exposed by QGIS; it does not independently verify that entries, processing history, file references, parameters, reports or workflow descriptions are complete, accurate or suitable for a particular purpose. Review important records against authoritative projects, data and evidence, and keep independent backups. Do not rely on Work Log alone for legal, contractual, safety-critical, regulatory, scientific or professional decisions. Users remain responsible for validating their data, methods, outputs and compliance obligations. The plugin is provided under GPL-2.0-or-later without warranty.
+
 ## Supporting development / koha
 
 TerraAnalytica Work Log is intended to be useful to the wider GIS and remote-sensing community. If the plugin saves you time or improves your processing documentation, users may choose to offer a **koha** to support continued development.

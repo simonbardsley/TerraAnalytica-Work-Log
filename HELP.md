@@ -198,6 +198,23 @@ Demo dates are generated relative to the current date so daily, weekly and month
 
 Demo projects are explicitly marked in the database. Resetting or removing the demo affects only demo-marked projects and does not delete normal user projects.
 
+## Accuracy, reliability and responsible use
+
+Work Log helps organise user-entered records and information exposed by QGIS, but it does not independently verify that entries, imported processing history, file references, parameters, durations, reports or workflow descriptions are complete, accurate or suitable for a particular purpose.
+
+- Review important records and exported reports against the source project, data and processing history.
+- Keep independent backups and preserve authoritative project files and evidence.
+- Do not rely on Work Log alone for legal, contractual, safety-critical, regulatory, scientific or professional decisions.
+- Results may also depend on QGIS, third-party providers, plugins, data quality and the user's configuration.
+
+Users remain responsible for validating their data, methods, outputs and compliance obligations. Work Log is provided under the GPL-2.0-or-later licence without warranty.
+
+## Related TerraAnalytica QGIS tools
+
+Work Log is part of a wider family of complementary TerraAnalytica tools for QGIS. The suite includes focused tools for layer and map management, labelling, tool discovery, notebooks, spectral analysis and accuracy assessment.
+
+Related tools include **Layer Lab**, **Map Lab**, **Label Lab**, **Toolsearch**, **Notebook Lab**, **Spectral Lab** and **Accuracy Lab**. Availability and release status vary while the suite is prepared for publication. Visit the Work Log homepage for current releases and suite information.
+
 ## Koha and supporting development
 
 If TerraAnalytica Work Log saves you time or improves the reproducibility of your GIS/remote-sensing work, you may choose to support its ongoing development with a **koha**.

@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.4.11
+
+- Standardised author metadata as TerraAnalytica (NZSpatial Limited).
+- Added an author identity check to the release builder.
+
 ## 1.4.10
 
 - Renamed the Plugin Manager listing to TA Work Log.

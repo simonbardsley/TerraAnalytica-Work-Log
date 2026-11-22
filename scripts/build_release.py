@@ -30,6 +30,8 @@ def main():
     metadata = configparser.ConfigParser(interpolation=None)
     metadata.read_string(files["metadata.txt"].decode("utf-8"))
     general = metadata["general"]
+    if general["author"] != "TerraAnalytica (NZSpatial Limited)":
+        raise ValueError("Use the standard TA suite author identity")
     if general["name"] != "TA Work Log" or "ta" not in general["tags"].split(","):
         raise ValueError("TA display name and discovery tag are required")
     version = general["version"]

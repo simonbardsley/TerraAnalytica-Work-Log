@@ -49,7 +49,7 @@ Default database location is within the active QGIS profile under `worklog/workl
 - QGIS 3.22–3.40 family
 - QGIS 4.x / Qt6-compatible API forms
 
-Version: **1.4.10**
+Version: **1.4.11**
 
 ## Licence
 

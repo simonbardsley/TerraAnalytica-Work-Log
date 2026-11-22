@@ -1,6 +1,8 @@
 # Work Log release checklist
 
-Target: TA Work Log 1.4.10
+Target: TA Work Log 1.4.11
+
+The 1.4.11 update standardises the author as TerraAnalytica (NZSpatial Limited).
 
 ## 1.4.10 naming update
 

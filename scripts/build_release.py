@@ -28,6 +28,9 @@ def main():
             {"scripts", "tests", ".github", ".gitignore", ".gitattributes"}
         }
     metadata = configparser.ConfigParser(interpolation=None)
+    scan_configs = {".bandit", ".flake8", ".secrets.baseline", ".gitleaks.toml"}
+    if any(Path(name).name in scan_configs for name in files):
+        raise ValueError("Release contains a security scanner override configuration")
     metadata.read_string(files["metadata.txt"].decode("utf-8"))
     general = metadata["general"]
     if general["author"] != "TerraAnalytica (NZSpatial Limited)":

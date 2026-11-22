@@ -49,7 +49,23 @@ Default database location is within the active QGIS profile under `worklog/workl
 - QGIS 3.22–3.40 family
 - QGIS 4.x / Qt6-compatible API forms
 
-Version: **1.4.11**
+Version: **1.4.12**
+
+## Optional TA Core and AI Central integration
+
+Work Log advertises local UI actions through `ta_plugin_descriptor()` and
+`ta_capabilities()`, using TA Core's existing discovery contract. Optional
+callers can open the panel, New Entry editor, Reports or Workflows using
+`worklog.open`, `worklog.new_entry`, `worklog.reports` and `worklog.workflows`.
+
+Discovery requires no provider keys and returns no log entries, attachment
+paths or analyst details. AI Central can consume these capabilities through
+TA Core discovery. Work Log makes no provider request and performs no automatic
+log export. Saving a new entry remains an explicit editor action.
+
+Release security checks run without packaged `.bandit`, `.flake8` or secrets
+baseline files. Run `python3 -m unittest discover -s tests -v` for SQL and
+capability regression coverage. See `docs/SECURITY.md` for the release scope.
 
 ## Licence
 

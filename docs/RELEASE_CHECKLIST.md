@@ -1,6 +1,14 @@
 # Work Log release checklist
 
-Target: TA Work Log 1.4.11
+Target: TA Work Log 1.4.12
+
+## 1.4.12 standard security checks
+
+- [ ] Run standard Bandit checks with no scan configuration files.
+- [ ] Run detect-secrets on the shipped package and review findings privately.
+- [ ] Run SQL and capability regression tests.
+- [ ] Verify optional TA Core discovery and standalone operation.
+- [ ] Upload the new version and inspect the QGIS repository's own results.
 
 The 1.4.11 update standardises the author as TerraAnalytica (NZSpatial Limited).
 

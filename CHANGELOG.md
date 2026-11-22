@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.4.12
+
+- Removed the packaged `.bandit` configuration and its global B608 suppression.
+- Replaced five dynamic SQL statements with fixed parameterised statements.
+- Added regression coverage for filters, SQL-like user text, partial updates,
+  explicit NULL values, reporting, workflow isolation and local capability discovery.
+- Added optional TA Core-compatible UI capabilities for AI Central and other
+  installed clients. Capabilities contain no credentials or log contents.
+- The release builder now rejects packaged scanner override configurations.
+
 ## 1.4.11
 
 - Standardised author metadata as TerraAnalytica (NZSpatial Limited).

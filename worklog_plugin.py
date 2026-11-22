@@ -23,9 +23,10 @@ from .reports_dialog import ReportsDialog
 from .workflow_dialog import WorkflowManagerDialog
 from .help_dialog import HelpDialog
 from .branding import icon as ta_icon, watch_theme
+from .integrations import WorkLogIntegrations
 
 
-class WorkLogPlugin:
+class WorkLogPlugin(WorkLogIntegrations):
     """QGIS plugin entry point."""
 
     def __init__(self, iface):

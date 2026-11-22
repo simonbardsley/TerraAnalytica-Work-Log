@@ -3,7 +3,7 @@
 QGIS Work Log plugin – project-linked diary / lab notebook.
 """
 
-__version__ = "1.4.11"
+__version__ = "1.4.12"
 
 
 def classFactory(iface):

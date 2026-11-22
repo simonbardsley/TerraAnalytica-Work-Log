@@ -726,46 +726,33 @@ class WorkLogDB:
         *,
         connection=None,
     ) -> None:
-        fields = []
-        values = []
-        if category is not None:
-            fields.append("category = ?")
-            values.append(category)
-        if description is not None:
-            fields.append("description = ?")
-            values.append(description)
-        if title is not None:
-            fields.append("title = ?")
-            values.append(title)
-        if tags is not None:
-            fields.append("tags = ?")
-            values.append(tags)
-        if workflow_id is not _UNSET:
-            fields.append("workflow_id = ?")
-            values.append(workflow_id)
-        if user_name is not None:
-            fields.append("user_name = ?")
-            values.append(user_name.strip() or None)
-        if duration_minutes is not _UNSET:
-            fields.append("duration_minutes = ?")
-            values.append(duration_minutes)
-        if workspace_name is not None:
-            fields.append("workspace_name = ?")
-            values.append(workspace_name)
-        if timestamp is not None:
-            fields.append("timestamp = ?")
-            values.append(timestamp)
-
-        if not fields:
+        # Column names are fixed. The presence flags distinguish an omitted
+        # optional value from an explicit NULL for workflow and duration.
+        changes = (
+            (category is not None, category),
+            (description is not None, description),
+            (title is not None, title),
+            (tags is not None, tags),
+            (workflow_id is not _UNSET, None if workflow_id is _UNSET else workflow_id),
+            (user_name is not None, (user_name or "").strip() or None),
+            (duration_minutes is not _UNSET, None if duration_minutes is _UNSET else duration_minutes),
+            (workspace_name is not None, workspace_name),
+            (timestamp is not None, timestamp),
+        )
+        if not any(present for present, value in changes):
             return
-
-        fields.append("updated_at = ?")
-        values.append(_now())
-        values.append(entry_id)
-
-        # ``fields`` contains only the fixed column assignments appended above;
-        # all user values remain bound SQLite parameters.
-        sql = f"UPDATE entries SET {', '.join(fields)} WHERE id = ?"
+        sql = """UPDATE entries SET
+            category = CASE WHEN ? THEN ? ELSE category END,
+            description = CASE WHEN ? THEN ? ELSE description END,
+            title = CASE WHEN ? THEN ? ELSE title END,
+            tags = CASE WHEN ? THEN ? ELSE tags END,
+            workflow_id = CASE WHEN ? THEN ? ELSE workflow_id END,
+            user_name = CASE WHEN ? THEN ? ELSE user_name END,
+            duration_minutes = CASE WHEN ? THEN ? ELSE duration_minutes END,
+            workspace_name = CASE WHEN ? THEN ? ELSE workspace_name END,
+            timestamp = CASE WHEN ? THEN ? ELSE timestamp END,
+            updated_at = ? WHERE id = ?"""
+        values = [value for pair in changes for value in pair] + [_now(), entry_id]
         with self._conn(connection) as conn:
             conn.execute(sql, values)
 
@@ -805,55 +792,33 @@ class WorkLogDB:
         offset: int = 0,
     ) -> List[Dict[str, Any]]:
         """Return entries for a project, newest first, with optional filters."""
-        clauses = ["e.project_id = ?"]
-        params: List[Any] = [project_id]
-
-        if category:
-            clauses.append("e.category = ?")
-            params.append(category)
-
-        if tag:
-            clauses.append("(',' || COALESCE(e.tags, '') || ',') LIKE ?")
-            params.append(f"%,{tag},%")
-
-        if date_from:
-            clauses.append("e.timestamp >= ?")
-            params.append(date_from)
-
-        if date_to:
-            # inclusive end-of-day
-            if len(date_to) == 10:
-                clauses.append("e.timestamp < date(?, '+1 day')")
-            else:
-                clauses.append("e.timestamp <= ?")
-            params.append(date_to)
-
-        join = ""
-        if search_text and search_text.strip():
-            if not self.fts_enabled:
-                return self._list_entries_like(
-                    project_id, category, tag, search_text, date_from, date_to, limit, offset
-                )
-            # FTS5
-            join = "JOIN entries_fts fts ON fts.rowid = e.id"
-            clauses.append("entries_fts MATCH ?")
-            # simple query – escape double quotes
-            q = search_text.strip().replace('"', '""')
-            params.append(f'"{q}"' if " " in q else q)
-
-        where = " AND ".join(clauses)
-        # ``join`` and ``where`` are assembled only from fixed SQL fragments in
-        # this method; search text and filters remain bound parameters.
-        sql = f"""
+        sql = """
             SELECT e.*,
                    (SELECT COUNT(*) FROM attachments a WHERE a.entry_id = e.id) AS attachment_count
             FROM entries e
-            {join}
-            WHERE {where}
+            WHERE e.project_id = ?
+              AND (? IS NULL OR e.category = ?)
+              AND (? IS NULL OR (',' || COALESCE(e.tags, '') || ',') LIKE ?)
+              AND (? IS NULL OR e.timestamp >= ?)
+              AND (? IS NULL OR CASE WHEN length(?) = 10
+                   THEN e.timestamp < date(?, '+1 day') ELSE e.timestamp <= ? END)
+              AND (? IS NULL OR e.id IN (
+                   SELECT rowid FROM entries_fts WHERE entries_fts MATCH ?))
             ORDER BY e.timestamp DESC
             LIMIT ? OFFSET ?
         """
-        params.extend([limit, offset])
+        query = None
+        if search_text and search_text.strip():
+            q = search_text.strip().replace('"', '""')
+            query = f'"{q}"' if " " in q else q
+        if not self.fts_enabled:
+            return self._list_entries_like(
+                project_id, category, tag, search_text or "", date_from, date_to, limit, offset
+            )
+        end = date_to or None
+        params = [project_id, category or None, category,
+                  tag or None, f"%,{tag},%", date_from or None, date_from,
+                  end, end, end, end, query, query, limit, offset]
 
         with self._conn() as conn:
             try:
@@ -878,40 +843,25 @@ class WorkLogDB:
         limit: int,
         offset: int,
     ) -> List[Dict[str, Any]]:
-        clauses = ["project_id = ?"]
-        params: List[Any] = [project_id]
-        if category:
-            clauses.append("category = ?")
-            params.append(category)
-        if tag:
-            clauses.append("(',' || COALESCE(tags, '') || ',') LIKE ?")
-            params.append(f"%,{tag},%")
-        if date_from:
-            clauses.append("timestamp >= ?")
-            params.append(date_from)
-        if date_to:
-            if len(date_to) == 10:
-                clauses.append("timestamp < date(?, '+1 day')")
-            else:
-                clauses.append("timestamp <= ?")
-            params.append(date_to)
-
         like = f"%{search_text.strip()}%"
-        clauses.append("(title LIKE ? OR description LIKE ? OR tags LIKE ?)")
-        params.extend([like, like, like])
-
-        where = " AND ".join(clauses)
-        # ``where`` contains only the fixed clauses appended above. All filter
-        # values are supplied separately through ``params``.
-        sql = f"""
+        sql = """
             SELECT e.*,
                    (SELECT COUNT(*) FROM attachments a WHERE a.entry_id = e.id) AS attachment_count
             FROM entries e
-            WHERE {where}
+            WHERE e.project_id = ?
+              AND (? IS NULL OR e.category = ?)
+              AND (? IS NULL OR (',' || COALESCE(e.tags, '') || ',') LIKE ?)
+              AND (? IS NULL OR e.timestamp >= ?)
+              AND (? IS NULL OR CASE WHEN length(?) = 10
+                   THEN e.timestamp < date(?, '+1 day') ELSE e.timestamp <= ? END)
+              AND (? = '' OR e.title LIKE ? OR e.description LIKE ? OR e.tags LIKE ?)
             ORDER BY timestamp DESC
             LIMIT ? OFFSET ?
         """
-        params.extend([limit, offset])
+        end = date_to or None
+        params = [project_id, category or None, category, tag or None, f"%,{tag},%",
+                  date_from or None, date_from, end, end, end, end,
+                  search_text.strip(), like, like, like, limit, offset]
         with self._conn() as conn:
             cur = conn.execute(sql, params)
             return [dict(r) for r in cur.fetchall()]
@@ -951,39 +901,24 @@ class WorkLogDB:
         date_to: Optional[str] = None,
     ) -> List[Dict[str, Any]]:
         """Return reporting rows across one or all projects."""
-        clauses = ["1=1"]
-        params: List[Any] = []
-        if project_id is not None:
-            clauses.append("e.project_id = ?")
-            params.append(project_id)
-        if category:
-            clauses.append("e.category = ?")
-            params.append(category)
-        if user_name:
-            clauses.append("e.user_name = ?")
-            params.append(user_name)
-        if date_from:
-            clauses.append("e.timestamp >= ?")
-            params.append(date_from)
-        if date_to:
-            if len(date_to) == 10:
-                clauses.append("e.timestamp < date(?, '+1 day')")
-            else:
-                clauses.append("e.timestamp <= ?")
-            params.append(date_to)
-
-        # ``clauses`` is a list of fixed predicates selected by optional
-        # filters. User-provided values remain parameterised.
-        sql = f"""
+        sql = """
             SELECT e.id, e.project_id, e.timestamp, e.category, e.user_name,
                    e.duration_minutes, e.title, e.description, e.tags, e.workflow_id,
                    p.name AS project_name, w.name AS workflow_name, w.version AS workflow_version
             FROM entries e
             JOIN projects p ON p.id = e.project_id
             LEFT JOIN workflows w ON w.id = e.workflow_id
-            WHERE {' AND '.join(clauses)}
+            WHERE (? IS NULL OR e.project_id = ?)
+              AND (? IS NULL OR e.category = ?)
+              AND (? IS NULL OR e.user_name = ?)
+              AND (? IS NULL OR e.timestamp >= ?)
+              AND (? IS NULL OR CASE WHEN length(?) = 10
+                   THEN e.timestamp < date(?, '+1 day') ELSE e.timestamp <= ? END)
             ORDER BY e.timestamp
         """
+        end = date_to or None
+        params = [project_id, project_id, category or None, category, user_name or None,
+                  user_name, date_from or None, date_from, end, end, end, end]
         with self._conn() as conn:
             rows = [dict(r) for r in conn.execute(sql, params).fetchall()]
         if tag:
@@ -1048,17 +983,12 @@ class WorkLogDB:
             return dict(row) if row else None
 
     def list_workflows(self, project_id: Optional[int] = None) -> List[Dict[str, Any]]:
-        clauses = []
-        params: List[Any] = []
-        if project_id is not None:
-            clauses.append("w.project_id = ?")
-            params.append(project_id)
-        where = "WHERE " + " AND ".join(clauses) if clauses else ""
-        # ``where`` is either empty or the fixed project predicate above.
-        sql = f"""SELECT w.*, p.name AS project_name,
+        sql = """SELECT w.*, p.name AS project_name,
                     (SELECT COUNT(*) FROM workflow_steps s WHERE s.workflow_id=w.id) AS step_count
                  FROM workflows w JOIN projects p ON p.id=w.project_id
-                 {where} ORDER BY w.updated_at DESC, w.name COLLATE NOCASE"""
+                 WHERE (? IS NULL OR w.project_id = ?)
+                 ORDER BY w.updated_at DESC, w.name COLLATE NOCASE"""
+        params = [project_id, project_id]
         with self._conn() as conn:
             rows = conn.execute(sql, params).fetchall()
             return [dict(r) for r in rows]

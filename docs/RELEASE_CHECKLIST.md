@@ -21,7 +21,7 @@ Target: TerraAnalytica Work Log 1.4.9
 - [x] Automated release-contract tests are present.
 - [x] Commit the approved release source (`062e146`).
 - [x] Build the installable ZIP from the committed revision (SHA-256 `175bc01c768df115fa624a9c8b0904d338c3d22b0a832e5f3c3ef01ac68cd65c`).
-- [ ] Create and push the public `v1.4.9` tag.
+- [x] Create and push the public `v1.4.9` tag.
 - [x] Publish the ZIP, SHA-256 file and build receipt as release assets.
 - [x] Select GPL-2.0-or-later and bundle the complete licence as `LICENSE`.
 

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Built-in user guide for TerraAnalytica Work Log."""
+"""Built-in user guide for TA Work Log."""
 
 from __future__ import annotations
 
@@ -27,13 +27,13 @@ th { font-weight: bold; }
 .note { padding: 9px 11px; border-left: 4px solid #777; margin: 10px 0; }
 .small { font-size: 90%; }
 </style></head><body>
-<h1>TerraAnalytica Work Log</h1>
+<h1>TA Work Log</h1>
 <p><b>GIS &amp; Remote Sensing Work Log, Reporting and Processing Provenance for QGIS</b></p>
-<p>TerraAnalytica Work Log is designed for analysts, researchers and consultants who need to remember not only <i>what</i> they did, but <i>how</i> a spatial or remote-sensing result was produced.</p>
+<p>TA Work Log is designed for analysts, researchers and consultants who need to remember not only <i>what</i> they did, but <i>how</i> a spatial or remote-sensing result was produced.</p>
 
 
 <h2 id="interface">Interface, branding and light/dark mode</h2>
-<p>The full plugin name is <b>TerraAnalytica Work Log</b>; the dock/tab label is shortened to <b>Work Log</b>. The fixed Charcoal header band uses a Gold <b>TERRAANALYTICA</b> eyebrow, white functional title and a short tools statement: <b>Work diary · reporting · processing provenance</b>.</p>
+<p>The full plugin name is <b>TA Work Log</b>; the dock/tab label is shortened to <b>Work Log</b>. The fixed Charcoal header band uses a Gold <b>TERRAANALYTICA</b> eyebrow, white functional title and a short tools statement: <b>Work diary · reporting · processing provenance</b>.</p>
 <p>Below the brand band, the interface follows the active QGIS/Qt light or dark palette. <b>Layer Lab Gold (#E8A838)</b> remains the accent. In light mode primary linework uses <b>TA Charcoal (#202326)</b>; in dark mode linework, surfaces and text follow the system palette for contrast while retaining Gold accents. Use <b>Help</b> for general guidance and <b>ⓘ</b> for field-specific explanations.</p>
 <div class="note">Interface branding does not force TerraAnalytica onto exported documents. Reports remain neutral by default or can use the organisation heading configured under Settings.</div>
 
@@ -46,7 +46,7 @@ th { font-weight: bold; }
 <li>Record the workflow's processing steps, final parameters, inputs and outputs. QGIS Processing History steps can be imported where available.</li>
 <li>Export reports to CSV/PDF, print them, or export/print a workflow method record.</li>
 </ol>
-<div class="note"><b>New user?</b> Use <b>Load / Reset Demo Data</b> from the TerraAnalytica Work Log menu. The demo is optional, clearly marked and can be removed without touching your real projects.</div>
+<div class="note"><b>New user?</b> Use <b>Load / Reset Demo Data</b> from the TA Work Log menu. The demo is optional, clearly marked and can be removed without touching your real projects.</div>
 
 <h2 id="backup">Back up and restore Work Log</h2>
 <p>Choose <b>Settings → Database → Create backup</b> to save a ZIP with the current database and its available attachments. Work Log reports attachments whose file and embedded copy are both missing.</p>
@@ -89,7 +89,7 @@ Tags: Sentinel-1, SAR, VV, VH, Gamma0, SNAP, pasture</pre>
 
 
 <h2 id="identity">Report identity and users</h2>
-<p>The plugin itself is branded <b>TerraAnalytica Work Log</b>, but exported reports are generic by default. Under <b>Settings &gt; Reporting &amp; User</b>, set an optional <b>Report organisation / heading</b> if reports should carry your own business, laboratory, team or project identity. Leave it blank to use the neutral titles <b>Work Log Report</b> and <b>Workflow Record</b>.</p>
+<p>The plugin itself is branded <b>TA Work Log</b>, but exported reports are generic by default. Under <b>Settings &gt; Reporting &amp; User</b>, set an optional <b>Report organisation / heading</b> if reports should carry your own business, laboratory, team or project identity. Leave it blank to use the neutral titles <b>Work Log Report</b> and <b>Workflow Record</b>.</p>
 <p>Each work-log entry can also store a <b>User / Analyst</b>. The user shown in the main dock acts as the current session user and is pre-filled on new entries. An optional persistent default user can be set in Settings. Reports can be filtered by analyst and CSV/PDF outputs retain that attribution.</p>
 <div class="note"><b>Session behaviour:</b> changing the active user affects new entries only. Existing records keep the user that was stored when they were created or last edited.</div>
 
@@ -109,7 +109,7 @@ Tags: Sentinel-1, SAR, VV, VH, Gamma0, SNAP, pasture</pre>
 <p class="small">Visit the Work Log homepage for current releases and information about the TerraAnalytica QGIS plugin suite.</p>
 
 <h2 id="koha">Koha and supporting development</h2>
-<p>If TerraAnalytica Work Log saves you time or improves the reproducibility of your GIS/remote-sensing work, you may choose to support continued development with a <b>koha</b>.</p>
+<p>If TA Work Log saves you time or improves the reproducibility of your GIS/remote-sensing work, you may choose to support continued development with a <b>koha</b>.</p>
 <p><b>Koha</b> is a Māori concept commonly used for a voluntary gift or contribution offered in appreciation, reciprocity or acknowledgement of value received. Koha is entirely optional in Work Log: it is not required to use the plugin and it does not unlock features.</p>
 <p class="small">A public support link can be added to the plugin homepage when one is available.</p>
 
@@ -190,7 +190,7 @@ Tags: Sentinel-1, SAR, VV, VH, Gamma0, SNAP, pasture</pre>
 <li>Export periodic PDF/CSV records when evidence or auditability matters.</li>
 </ul>
 
-<p class="small">TerraAnalytica Work Log — designed for practical GIS, Earth observation, remote sensing and spatial-science work.</p>
+<p class="small">TA Work Log — designed for practical GIS, Earth observation, remote sensing and spatial-science work.</p>
 </body></html>
 """
 

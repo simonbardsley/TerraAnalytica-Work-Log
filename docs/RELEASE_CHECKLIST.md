@@ -1,6 +1,17 @@
 # Work Log release checklist
 
-Target: TerraAnalytica Work Log 1.4.9
+Target: TA Work Log 1.4.10
+
+## 1.4.10 naming update
+
+- [x] Public display name is TA Work Log and metadata includes ta/terraanalytica tags.
+- [x] Menu, messages, help and README use the same product name.
+- [x] Existing package, settings, database and toolbar identifiers are retained.
+- [ ] Build the committed source with `python3 scripts/build_release.py`.
+- [ ] Upload the 1.4.10 ZIP as a new version of the existing qgis_worklog listing.
+- [ ] Confirm the plugin support email and review QGIS approval status.
+
+The checkboxes below record the previous 1.4.9 release baseline.
 
 ## Product and runtime
 

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Workflow/provenance recording for TerraAnalytica Work Log."""
+"""Workflow/provenance recording for TA Work Log."""
 
 from __future__ import annotations
 
@@ -256,7 +256,7 @@ class ProcessingHistoryPicker(QDialog):
         self.resize(920, 560)
         layout = QVBoxLayout(self)
         label = QLabel(self.tr(
-            "Select one or more Processing runs. TerraAnalytica Work Log will retain the algorithm, "
+            "Select one or more Processing runs. TA Work Log will retain the algorithm, "
             "parameters, Python/qgis_process commands and execution log supplied by QGIS."
         ))
         label.setWordWrap(True)

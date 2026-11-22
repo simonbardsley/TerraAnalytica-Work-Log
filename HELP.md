@@ -1,11 +1,11 @@
-# TerraAnalytica Work Log — Help and Use Cases
+# TA Work Log — Help and Use Cases
 
 **Purpose:** a lightweight QGIS work diary, reporting tool and processing-provenance recorder designed specifically for GIS, Earth observation and remote-sensing work. The interface uses Layer Lab Gold (`#E8A838`) and TerraAnalytica Charcoal (`#202326`) accents while remaining compatible with QGIS themes.
 
 
 ## Interface icons and help
 
-The main Work Log, Reports and Workflow controls use compact TerraAnalytica Gold/Charcoal icons so the plugin stays tidy inside QGIS. The product header uses boxed **Help** and **Settings** controls consistent with the wider TerraAnalytica plugin family. Hover over an icon to see its tooltip and action. Descriptive text is retained in the QGIS **Plugins > TerraAnalytica Work Log** menu for discoverability.
+The main Work Log, Reports and Workflow controls use compact TerraAnalytica Gold/Charcoal icons so the plugin stays tidy inside QGIS. The product header uses boxed **Help** and **Settings** controls consistent with the wider TerraAnalytica plugin family. Hover over an icon to see its tooltip and action. Descriptive text is retained in the QGIS **Plugins > TA Work Log** menu for discoverability.
 
 - **Help** — opens the complete guide and use-case workflows.
 - **ⓘ** — explains the specific field or concept beside it.
@@ -13,7 +13,7 @@ The main Work Log, Reports and Workflow controls use compact TerraAnalytica Gold
 
 ## Interface, branding and light/dark mode
 
-The plugin interface establishes the shared TerraAnalytica application family for **Work Log** and the Lab plugins. The full product name remains **TerraAnalytica Work Log**, while the dock tab is shortened to **Work Log**. Its fixed Charcoal band uses a Gold `TERRAANALYTICA` eyebrow, white functional title and the short capability statement `Work diary · reporting · processing provenance`.
+The plugin interface establishes the shared TerraAnalytica application family for **Work Log** and the Lab plugins. The full product name remains **TA Work Log**, while the dock tab is shortened to **Work Log**. Its fixed Charcoal band uses a Gold `TERRAANALYTICA` eyebrow, white functional title and the short capability statement `Work diary · reporting · processing provenance`.
 
 Below the fixed brand band, Work Log follows the active QGIS/Qt light or dark palette. **Layer Lab Gold (`#E8A838`)** remains the accent. In light mode primary linework/text uses **TA Charcoal (`#202326`)**; in dark mode linework, surfaces and text follow the system palette for contrast while retaining Gold accents. Use the boxed **Help** control for the complete guide and **ⓘ** for field-specific explanations.
 
@@ -109,7 +109,7 @@ User-hour summaries use two decimal places and include a total row so displayed 
 
 ## Report identity and document branding
 
-The plugin itself is branded **TerraAnalytica Work Log**, but generated documents are deliberately generic by default so they can be used by individuals, consultancies, research groups and organisations.
+The plugin itself is branded **TA Work Log**, but generated documents are deliberately generic by default so they can be used by individuals, consultancies, research groups and organisations.
 
 Under **Settings > Reporting & User**, set an optional **Report organisation / heading**. For example, `Acme Spatial` produces `Acme Spatial - Work Log Report`. Leave it blank to use the neutral titles **Work Log Report** and **Workflow Record**.
 
@@ -217,11 +217,11 @@ Related tools include **Layer Lab**, **Map Lab**, **Label Lab**, **Toolsearch**,
 
 ## Koha and supporting development
 
-If TerraAnalytica Work Log saves you time or improves the reproducibility of your GIS/remote-sensing work, you may choose to support its ongoing development with a **koha**.
+If TA Work Log saves you time or improves the reproducibility of your GIS/remote-sensing work, you may choose to support its ongoing development with a **koha**.
 
 **Koha** is a Māori concept commonly used for a voluntary gift or contribution offered in appreciation, reciprocity or acknowledgement of value received.
 
-For TerraAnalytica Work Log, koha is entirely optional: it is not a purchase requirement and it does not unlock features.
+For TA Work Log, koha is entirely optional: it is not a purchase requirement and it does not unlock features.
 
 A public support destination can be linked from the plugin homepage when one is available.
 

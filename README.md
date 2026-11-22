@@ -1,4 +1,4 @@
-# TerraAnalytica Work Log
+# TA Work Log
 
 A lightweight QGIS work diary / technical notebook designed for **GIS and remote-sensing work**.
 
@@ -49,13 +49,13 @@ Default database location is within the active QGIS profile under `worklog/workl
 - QGIS 3.22–3.40 family
 - QGIS 4.x / Qt6-compatible API forms
 
-Version: **1.4.9**
+Version: **1.4.10**
 
 ## Licence
 
 Copyright (C) 2026 NZSpatial Limited, trading as TerraAnalytica.
 
-TerraAnalytica Work Log is free software licensed under the **GNU General
+TA Work Log is free software licensed under the **GNU General
 Public License, version 2 or (at your option) any later version**
 (`GPL-2.0-or-later`). You may use, study, modify and redistribute the plugin
 under those terms. See the bundled `LICENSE` file for the complete licence.
@@ -67,7 +67,7 @@ as trademarks by the GPL software licence.
 
 ## TerraAnalytica interface and QGIS themes
 
-Work Log defines the shared TerraAnalytica plugin visual language: a fixed Charcoal band with a Gold `TERRAANALYTICA` eyebrow, white functional title and a short muted capability statement, followed by compact controls and palette-aware content. The content area follows QGIS light and dark modes. The dock tab is **Work Log** while the Plugin Manager retains the full **TerraAnalytica Work Log** name.
+Work Log defines the shared TerraAnalytica plugin visual language: a fixed Charcoal band with a Gold `TERRAANALYTICA` eyebrow, white functional title and a short muted capability statement, followed by compact controls and palette-aware content. The content area follows QGIS light and dark modes. The dock tab is **Work Log** while the Plugin Manager retains the full **TA Work Log** name.
 
 The interface follows the active QGIS/Qt light or dark palette. TA Gold remains the brand accent; controls, tables, search fields, tabs and most action icons adapt for contrast. The boxed **Help** and **Settings** controls match the wider TerraAnalytica plugin family, while field-specific explanatory controls use **ⓘ**. Exported reports remain neutral/customisable and are not forced to carry TerraAnalytica branding.
 
@@ -83,7 +83,7 @@ CSV exports include any linked workflow name/version alongside the work-log entr
 
 ## Reproducible workflows
 
-Open **Workflows…** from the TerraAnalytica Work Log toolbar, menu or dock panel. A workflow is intended to record *how* a GIS or remote-sensing result was produced, while normal Work Log entries continue to record *what work was done and how long it took*.
+Open **Workflows…** from the TA Work Log toolbar, menu or dock panel. A workflow is intended to record *how* a GIS or remote-sensing result was produced, while normal Work Log entries continue to record *what work was done and how long it took*.
 
 A workflow can contain:
 
@@ -101,7 +101,7 @@ A normal Work Log entry can optionally be linked to one of the workflows in the 
 
 ## Built-in help and demo/template data
 
-Choose **Help & Use Cases…** from the TerraAnalytica Work Log menu (or use the ⓘ button in the dock) for an integrated guide covering entries, reports, workflows, final parameters and GIS/remote-sensing use cases. A Markdown copy is also bundled as `HELP.md`.
+Choose **Help & Use Cases…** from the TA Work Log menu (or use the ⓘ button in the dock) for an integrated guide covering entries, reports, workflows, final parameters and GIS/remote-sensing use cases. A Markdown copy is also bundled as `HELP.md`.
 
 For evaluation/training, choose **Load / Reset Demo Data…**. The demo is opt-in and creates two clearly marked projects with recent generated dates, realistic GIS/RS entries and three workflow records. It exercises daily/weekly/monthly reporting, work classes, tags, project comparison, search, CSV/PDF/print and workflow diagrams.
 
@@ -123,7 +123,7 @@ Work Log organises user-entered records and information exposed by QGIS; it does
 
 ## Supporting development / koha
 
-TerraAnalytica Work Log is intended to be useful to the wider GIS and remote-sensing community. If the plugin saves you time or improves your processing documentation, users may choose to offer a **koha** to support continued development.
+TA Work Log is intended to be useful to the wider GIS and remote-sensing community. If the plugin saves you time or improves your processing documentation, users may choose to offer a **koha** to support continued development.
 
 Koha is a Māori concept of a voluntary gift or contribution offered in appreciation, reciprocity or acknowledgement of value received. It is optional and does not unlock plugin features. A support link can be added once a public support page is available.
 

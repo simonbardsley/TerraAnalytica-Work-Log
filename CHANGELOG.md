@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.4.10
+
+- Renamed the Plugin Manager listing to TA Work Log.
+- Added TA and TerraAnalytica discovery tags.
+- Updated visible menu, message and help wording to match the suite naming convention.
+- Retained the qgis_worklog package ID, database formats and saved toolbar identity.
+
 ## 1.4.9
 
 - Addressed the QGIS repository Bandit scan with documented, narrowly scoped handling for safe parameterised SQL construction.

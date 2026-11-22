@@ -164,7 +164,7 @@ class SettingsDialog(QDialog):
         rep_form.addRow(self.tr("Default user / analyst:"), self.edit_default_user)
         rep_layout.addLayout(rep_form)
         rep_hint = QLabel(self.tr(
-            "The plugin remains branded TerraAnalytica Work Log, but exported PDF reports are generic by default. "
+            "The plugin remains branded TA Work Log, but exported PDF reports are generic by default. "
             "If you set a report organisation/heading it is used in Work Log and Workflow report titles. "
             "The default user starts each QGIS session; the user can still be changed per entry or for the active session."
         ))
@@ -243,12 +243,12 @@ class SettingsDialog(QDialog):
             self._open_database(path)
             QMessageBox.information(
                 self,
-                self.tr("TerraAnalytica Work Log"),
+                self.tr("TA Work Log"),
                 self.tr("Database location updated.\n{}").format(path),
             )
         except Exception as e:
             QMessageBox.critical(
-                self, self.tr("TerraAnalytica Work Log"), self.tr("Could not open database:\n{}").format(e)
+                self, self.tr("TA Work Log"), self.tr("Could not open database:\n{}").format(e)
             )
 
     def _open_database(self, path: str) -> None:
@@ -379,7 +379,7 @@ class SettingsDialog(QDialog):
                     self.plugin.override_project(new_name.strip())
             except Exception as e:
                 QMessageBox.warning(
-                    self, self.tr("TerraAnalytica Work Log"), self.tr("Rename failed:\n{}").format(e)
+                    self, self.tr("TA Work Log"), self.tr("Rename failed:\n{}").format(e)
                 )
 
     def _delete_project(self) -> None:

@@ -32,7 +32,7 @@ class WorkLogPlugin:
         self.iface = iface
         self.plugin_dir = os.path.dirname(__file__)
         self.actions = []
-        self.menu = self.tr("&TerraAnalytica Work Log")
+        self.menu = self.tr("&TA Work Log")
         self.toolbar = None
         self.dock = None
         self.db: WorkLogDB | None = None
@@ -77,7 +77,7 @@ class WorkLogPlugin:
             icon, self.tr("Work Log Panel"), self.iface.mainWindow()
         )
         self.action_toggle_dock.setCheckable(True)
-        self.action_toggle_dock.setToolTip(self.tr("Show / hide TerraAnalytica Work Log dock"))
+        self.action_toggle_dock.setToolTip(self.tr("Show / hide TA Work Log dock"))
         self.action_toggle_dock.triggered.connect(self.toggle_dock)
         self.toolbar.addAction(self.action_toggle_dock)
         self.iface.addPluginToMenu(self.menu, self.action_toggle_dock)
@@ -127,7 +127,7 @@ class WorkLogPlugin:
         self.action_help = QAction(
             ta_icon("help"), self.tr("Help & Use Cases…"), self.iface.mainWindow()
         )
-        self.action_help.setToolTip(self.tr("Open the TerraAnalytica Work Log user guide and GIS/remote-sensing use cases"))
+        self.action_help.setToolTip(self.tr("Open the TA Work Log user guide and GIS/remote-sensing use cases"))
         self.action_help.triggered.connect(self.open_help)
         self.toolbar.addAction(self.action_help)
         self.iface.addPluginToMenu(self.menu, self.action_help)
@@ -144,7 +144,7 @@ class WorkLogPlugin:
         self.action_demo_remove = QAction(
             self.tr("Remove Demo Data…"), self.iface.mainWindow()
         )
-        self.action_demo_remove.setToolTip(self.tr("Remove only projects explicitly marked as TerraAnalytica Work Log demo data"))
+        self.action_demo_remove.setToolTip(self.tr("Remove only projects explicitly marked as TA Work Log demo data"))
         self.action_demo_remove.triggered.connect(self.remove_demo_data)
         self.iface.addPluginToMenu(self.menu, self.action_demo_remove)
         self.actions.append(self.action_demo_remove)
@@ -207,7 +207,7 @@ class WorkLogPlugin:
         except Exception as exc:
             QgsMessageLog.logMessage(
                 self.tr("Work Log project signals were already disconnected: {}").format(exc),
-                "TerraAnalytica Work Log",
+                "TA Work Log",
                 Qgis.Info,
             )
 
@@ -385,7 +385,7 @@ class WorkLogPlugin:
         if not self.db:
             QMessageBox.warning(
                 self.iface.mainWindow(),
-                self.tr("TerraAnalytica Work Log"),
+                self.tr("TA Work Log"),
                 self.tr("Database is not available.\n\n{}").format(
                     self.db_error or self.tr("Unknown database error")
                 ),
@@ -403,7 +403,7 @@ class WorkLogPlugin:
         if not self.db:
             QMessageBox.warning(
                 self.iface.mainWindow(),
-                self.tr("TerraAnalytica Work Log"),
+                self.tr("TA Work Log"),
                 self.tr("Database is not available.\n\n{}").format(
                     self.db_error or self.tr("Unknown database error")
                 ),
@@ -425,7 +425,7 @@ class WorkLogPlugin:
     def load_demo_data(self) -> None:
         if not self.db:
             QMessageBox.warning(
-                self.iface.mainWindow(), self.tr("TerraAnalytica Work Log"),
+                self.iface.mainWindow(), self.tr("TA Work Log"),
                 self.tr("Database is not available.\n\n{}").format(self.db_error or self.tr("Unknown database error")),
             )
             return
@@ -465,7 +465,7 @@ class WorkLogPlugin:
         if not self.db.has_demo_data():
             QMessageBox.information(
                 self.iface.mainWindow(), self.tr("Remove Demo Data"),
-                self.tr("No TerraAnalytica Work Log demo projects are currently installed."),
+                self.tr("No TA Work Log demo projects are currently installed."),
             )
             return
         if QMessageBox.question(

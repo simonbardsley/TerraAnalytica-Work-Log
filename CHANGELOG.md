@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.4.9
+
+- Addressed the QGIS repository Bandit scan with documented, narrowly scoped handling for safe parameterised SQL construction.
+- Replaced silent exception handlers with diagnostic logging.
+- Updated Qt event and colour enum resolution for QGIS 3.22–4.x compatibility.
+
 ## 1.4.8
 
 - Create portable Work Log backups and restore independent copies from Settings.

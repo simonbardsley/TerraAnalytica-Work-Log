@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import csv
 import html
+import logging
 import re
 from collections import defaultdict
 from datetime import datetime
@@ -37,6 +38,9 @@ from qgis.PyQt.QtWidgets import (
     QVBoxLayout,
     QWidget,
 )
+
+
+LOGGER = logging.getLogger(__name__)
 
 
 class HorizontalBarChart(QWidget):
@@ -596,7 +600,7 @@ class ReportsDialog(QDialog):
             printer.setPageMargins(QMarginsF(10, 10, 10, 10), getattr(units, "Millimeter"))
         except Exception:
             # Older Qt/QGIS builds may expose a reduced printer API. Printing still works.
-            pass
+            LOGGER.debug("QPrinter page layout API is unavailable", exc_info=True)
 
     def _report_document(self) -> QTextDocument:
         cache = self._summary_cache or {}
@@ -616,7 +620,7 @@ class ReportsDialog(QDialog):
                     QUrl(name), widget.report_image(360, 246)
                 )
             except Exception:
-                pass
+                LOGGER.debug("Could not render report chart image: %s", name, exc_info=True)
 
         project = self.cmb_project.currentText()
         work_class = self.cmb_category.currentText()

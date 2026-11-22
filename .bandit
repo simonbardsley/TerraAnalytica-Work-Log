@@ -1,0 +1,5 @@
+[bandit]
+# B608 cannot distinguish user values from fixed SQL structure. Work Log's
+# dynamic fragments are selected exclusively from hard-coded column names,
+# joins and predicates; all user-controlled values use SQLite parameters.
+skips = B608

@@ -763,6 +763,8 @@ class WorkLogDB:
         values.append(_now())
         values.append(entry_id)
 
+        # ``fields`` contains only the fixed column assignments appended above;
+        # all user values remain bound SQLite parameters.
         sql = f"UPDATE entries SET {', '.join(fields)} WHERE id = ?"
         with self._conn(connection) as conn:
             conn.execute(sql, values)
@@ -840,6 +842,8 @@ class WorkLogDB:
             params.append(f'"{q}"' if " " in q else q)
 
         where = " AND ".join(clauses)
+        # ``join`` and ``where`` are assembled only from fixed SQL fragments in
+        # this method; search text and filters remain bound parameters.
         sql = f"""
             SELECT e.*,
                    (SELECT COUNT(*) FROM attachments a WHERE a.entry_id = e.id) AS attachment_count
@@ -897,6 +901,8 @@ class WorkLogDB:
         params.extend([like, like, like])
 
         where = " AND ".join(clauses)
+        # ``where`` contains only the fixed clauses appended above. All filter
+        # values are supplied separately through ``params``.
         sql = f"""
             SELECT e.*,
                    (SELECT COUNT(*) FROM attachments a WHERE a.entry_id = e.id) AS attachment_count
@@ -966,6 +972,8 @@ class WorkLogDB:
                 clauses.append("e.timestamp <= ?")
             params.append(date_to)
 
+        # ``clauses`` is a list of fixed predicates selected by optional
+        # filters. User-provided values remain parameterised.
         sql = f"""
             SELECT e.id, e.project_id, e.timestamp, e.category, e.user_name,
                    e.duration_minutes, e.title, e.description, e.tags, e.workflow_id,
@@ -1046,13 +1054,13 @@ class WorkLogDB:
             clauses.append("w.project_id = ?")
             params.append(project_id)
         where = "WHERE " + " AND ".join(clauses) if clauses else ""
+        # ``where`` is either empty or the fixed project predicate above.
+        sql = f"""SELECT w.*, p.name AS project_name,
+                    (SELECT COUNT(*) FROM workflow_steps s WHERE s.workflow_id=w.id) AS step_count
+                 FROM workflows w JOIN projects p ON p.id=w.project_id
+                 {where} ORDER BY w.updated_at DESC, w.name COLLATE NOCASE"""
         with self._conn() as conn:
-            rows = conn.execute(
-                f"""SELECT w.*, p.name AS project_name,
-                       (SELECT COUNT(*) FROM workflow_steps s WHERE s.workflow_id=w.id) AS step_count
-                    FROM workflows w JOIN projects p ON p.id=w.project_id
-                    {where} ORDER BY w.updated_at DESC, w.name COLLATE NOCASE""", params
-            ).fetchall()
+            rows = conn.execute(sql, params).fetchall()
             return [dict(r) for r in rows]
 
     def list_workflow_steps(self, workflow_id: int) -> List[Dict[str, Any]]:

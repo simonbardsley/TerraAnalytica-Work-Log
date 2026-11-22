@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import html
 import json
+import logging
 import platform
 from typing import Any, Dict, List, Optional
 
@@ -39,6 +40,9 @@ from qgis.core import QgsApplication, QgsSettings, Qgis
 from qgis.gui import QgsGui
 
 
+LOGGER = logging.getLogger(__name__)
+
+
 def _json_safe(value: Any) -> Any:
     """Convert QVariant-ish values into JSON-safe Python values."""
     if value is None or isinstance(value, (str, int, float, bool)):
@@ -51,7 +55,7 @@ def _json_safe(value: Any) -> Any:
         try:
             return value.toString()
         except Exception:
-            pass
+            LOGGER.debug("Could not convert QVariant-like value with toString", exc_info=True)
     return str(value)
 
 
@@ -77,7 +81,7 @@ def _configure_printer(printer: QPrinter) -> None:
         units = getattr(QPageLayout, "Unit", QPageLayout)
         printer.setPageMargins(QMarginsF(10, 10, 10, 10), getattr(units, "Millimeter"))
     except Exception:
-        pass
+        LOGGER.debug("QPrinter page layout API is unavailable", exc_info=True)
 
 
 def _report_heading(kind: str) -> str:
@@ -315,7 +319,11 @@ class ProcessingHistoryPicker(QDialog):
                         if alg:
                             display = alg.displayName()
                     except Exception:
-                        pass
+                        LOGGER.debug(
+                            "Could not resolve Processing algorithm display name for %s",
+                            algorithm_id,
+                            exc_info=True,
+                        )
             params = _json_safe(data.get("parameters") or {})
             inputs = params.get("inputs", params) if isinstance(params, dict) else params
             params_json = json.dumps(inputs, ensure_ascii=False, indent=2)

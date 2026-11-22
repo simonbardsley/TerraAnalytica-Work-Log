@@ -35,17 +35,21 @@ _PALETTE_TEXT = _palette_role("Text")
 _PALETTE_WINDOW_TEXT = _palette_role("WindowText")
 _PALETTE_MID = _palette_role("Mid")
 
-try:
-    _PALETTE_CHANGE = QEvent.PaletteChange
-    _APP_PALETTE_CHANGE = QEvent.ApplicationPaletteChange
-except AttributeError:  # Qt6 scoped enum
-    _PALETTE_CHANGE = QEvent.Type.PaletteChange
-    _APP_PALETTE_CHANGE = QEvent.Type.ApplicationPaletteChange
+def _event_type(name):
+    """Resolve scoped Qt6 and legacy Qt5 event values without deprecated syntax."""
+    event_enum = getattr(QEvent, "Type", QEvent)
+    return getattr(event_enum, name)
 
-try:
-    _TRANSPARENT = Qt.transparent
-except AttributeError:
-    _TRANSPARENT = Qt.GlobalColor.transparent
+
+def _global_colour(name):
+    """Resolve scoped Qt6 and legacy Qt5 global colours."""
+    colour_enum = getattr(Qt, "GlobalColor", Qt)
+    return getattr(colour_enum, name)
+
+
+_PALETTE_CHANGE = _event_type("PaletteChange")
+_APP_PALETTE_CHANGE = _event_type("ApplicationPaletteChange")
+_TRANSPARENT = _global_colour("transparent")
 
 
 def _blend(a: QColor, b: QColor, amount: float) -> QColor:

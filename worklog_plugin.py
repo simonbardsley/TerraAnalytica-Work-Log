@@ -204,8 +204,12 @@ class WorkLogPlugin:
             QgsProject.instance().readProject.disconnect(self._on_project_changed)
             QgsProject.instance().projectSaved.disconnect(self._on_project_changed)
             QgsProject.instance().cleared.disconnect(self._on_project_cleared)
-        except Exception:
-            pass
+        except Exception as exc:
+            QgsMessageLog.logMessage(
+                self.tr("Work Log project signals were already disconnected: {}").format(exc),
+                "TerraAnalytica Work Log",
+                Qgis.Info,
+            )
 
     def session_user(self) -> str:
         return self._session_user

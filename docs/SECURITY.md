@@ -1,5 +1,13 @@
 # Release security scope
 
+## Public build hashes
+
+The 1.4.12 QGIS secrets scan flagged the public Git revision and source SHA-256
+digest in BUILD-INFO.json as high-entropy hex strings. Version 1.4.13 uses a
+public repository/release-tag reference inside the ZIP. Full hashes remain in
+the separate `.zip.json` build receipt and `.zip.sha256` release asset. Neither
+value is an authentication credential. No scanner suppression is added.
+
 ## Scanner configuration
 
 Version 1.4.12 removes `.bandit` and its broad B608 exclusion. Entry updates,

@@ -56,7 +56,15 @@ def main():
         "sourceArchiveSha256": digest.hexdigest(), "buildRecipe": "scripts/build_release.py",
         "reproducible": True, "licence": "GPL-2.0-or-later",
     }
-    files["resources/BUILD-INFO.json"] = (json.dumps(receipt, indent=2) + "\n").encode()
+    # Full hashes belong in the external verification receipt. QGIS scans the
+    # embedded receipt for credentials and flags those public hex digests.
+    embedded_receipt = {
+        "pluginId": PLUGIN_ID, "version": version,
+        "sourceRepository": "https://github.com/simonbardsley/TerraAnalytica-Work-Log",
+        "sourceTag": f"v{version}", "buildRecipe": "scripts/build_release.py",
+        "reproducible": True, "licence": "GPL-2.0-or-later",
+    }
+    files["resources/BUILD-INFO.json"] = (json.dumps(embedded_receipt, indent=2) + "\n").encode()
     output = ROOT / "dist"
     output.mkdir(exist_ok=True)
     target = output / f"{PLUGIN_ID}-{version}.zip"

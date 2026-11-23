@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.4.13
+
+- The embedded build receipt now identifies the public repository and release tag.
+- Full Git revision and SHA-256 verification values remain in the external build
+  receipt and checksum assets. This resolves high-entropy credential false positives
+  without suppressing the scanner.
+
 ## 1.4.12
 
 - Removed the packaged `.bandit` configuration and its global B608 suppression.

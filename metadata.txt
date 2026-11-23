@@ -3,7 +3,7 @@ name=TA Work Log
 qgisMinimumVersion=3.22
 qgisMaximumVersion=4.99
 description=GIS and remote-sensing work log for QGIS with time/project records, searchable tags, multi-user reporting, CSV/PDF/print export, reproducible processing workflows, Processing History capture, final parameters, inputs/outputs, demo data, built-in help and a TerraAnalytica Gold/Charcoal interface that follows QGIS light and dark themes.
-version=1.4.12
+version=1.4.13
 author=TerraAnalytica (NZSpatial Limited)
 email=help@nzspatial.com
 about=TA Work Log is a practical GIS and remote-sensing work diary, project time record, technical notebook and processing-provenance recorder for QGIS. Record project work by analyst, work class, duration and tags; search and filter accumulated records; and create compact CSV/PDF/print reports by project, user, class, tag and date. Reproducible workflows can import QGIS Processing History, retain algorithms, parameters and commands, record manual steps from SNAP, Python, R, Google Earth Engine, drone/photogrammetry software or fieldwork, store final parameters and inputs/outputs, and generate workflow diagrams and method records. An opt-in demo pack and built-in GIS/remote-sensing help make the plugin easy to evaluate. TerraAnalytica is the plugin brand, while exported reports can remain neutral or use a custom organisation heading. Work Log is part of the TerraAnalytica family of complementary QGIS productivity and analysis tools.
@@ -14,7 +14,8 @@ homepage=https://terraanalytica.co.nz/qgis-plugins/work-log
 icon=icons/worklog.png
 experimental=False
 deprecated=False
-changelog=1.4.12 - Removed scan configuration overrides, replaced dynamic SQL with fixed parameterised statements, and exposed optional local TA Core capabilities.
+changelog=1.4.13 - Kept public verification hashes in the external build receipt to avoid credential-scan false positives inside the ZIP.
+    1.4.12 - Removed scan configuration overrides, replaced dynamic SQL with fixed parameterised statements, and exposed optional local TA Core capabilities.
     1.4.11 - Standardised the author as TerraAnalytica (NZSpatial Limited).
     1.4.10 - Renamed the plugin to TA Work Log for consistent TA suite discovery and updated visible help and menu wording.
     1.4.9 - Addressed QGIS repository security-scan findings, documented safe parameterised SQL construction, replaced silent exception handlers with diagnostics, and updated Qt enum handling for QGIS 3.22–4.x compatibility.
